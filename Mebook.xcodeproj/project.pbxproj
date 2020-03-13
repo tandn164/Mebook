@@ -15,6 +15,10 @@
 		4DB06D7E241BAB3500198A3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB06D7C241BAB3500198A3E /* LaunchScreen.storyboard */; };
 		4DB06D87241BAB9D00198A3E /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB06D85241BAB9D00198A3E /* AvatarCell.swift */; };
 		4DB06D88241BAB9D00198A3E /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB06D86241BAB9D00198A3E /* AvatarCell.xib */; };
+		4DB06D8D241BCACD00198A3E /* normalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB06D8B241BCACD00198A3E /* normalCell.swift */; };
+		4DB06D8E241BCACD00198A3E /* normalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB06D8C241BCACD00198A3E /* normalCell.xib */; };
+		4DF5B953241BDF2C00A58AA5 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF5B951241BDF2C00A58AA5 /* Logout.swift */; };
+		4DF5B954241BDF2C00A58AA5 /* Logout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF5B952241BDF2C00A58AA5 /* Logout.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		4DB06D7F241BAB3500198A3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DB06D85241BAB9D00198A3E /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		4DB06D86241BAB9D00198A3E /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
+		4DB06D8B241BCACD00198A3E /* normalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = normalCell.swift; sourceTree = "<group>"; };
+		4DB06D8C241BCACD00198A3E /* normalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = normalCell.xib; sourceTree = "<group>"; };
+		4DF5B951241BDF2C00A58AA5 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		4DF5B952241BDF2C00A58AA5 /* Logout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Logout.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +70,7 @@
 			children = (
 				4DB06D71241BAB3400198A3E /* AppDelegate.swift */,
 				4DB06D73241BAB3400198A3E /* SceneDelegate.swift */,
-				4DB06D75241BAB3400198A3E /* ViewController.swift */,
+				4DB06D8A241BB48800198A3E /* Controller */,
 				4DB06D89241BABA300198A3E /* View */,
 				4DB06D7A241BAB3500198A3E /* Assets.xcassets */,
 				4DB06D7C241BAB3500198A3E /* LaunchScreen.storyboard */,
@@ -77,8 +85,20 @@
 				4DB06D77241BAB3400198A3E /* Main.storyboard */,
 				4DB06D85241BAB9D00198A3E /* AvatarCell.swift */,
 				4DB06D86241BAB9D00198A3E /* AvatarCell.xib */,
+				4DB06D8B241BCACD00198A3E /* normalCell.swift */,
+				4DB06D8C241BCACD00198A3E /* normalCell.xib */,
+				4DF5B951241BDF2C00A58AA5 /* Logout.swift */,
+				4DF5B952241BDF2C00A58AA5 /* Logout.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4DB06D8A241BB48800198A3E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4DB06D75241BAB3400198A3E /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB06D7E241BAB3500198A3E /* LaunchScreen.storyboard in Resources */,
+				4DF5B954241BDF2C00A58AA5 /* Logout.xib in Resources */,
 				4DB06D7B241BAB3500198A3E /* Assets.xcassets in Resources */,
 				4DB06D88241BAB9D00198A3E /* AvatarCell.xib in Resources */,
 				4DB06D79241BAB3400198A3E /* Main.storyboard in Resources */,
+				4DB06D8E241BCACD00198A3E /* normalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB06D76241BAB3400198A3E /* ViewController.swift in Sources */,
+				4DF5B953241BDF2C00A58AA5 /* Logout.swift in Sources */,
 				4DB06D72241BAB3400198A3E /* AppDelegate.swift in Sources */,
 				4DB06D87241BAB9D00198A3E /* AvatarCell.swift in Sources */,
+				4DB06D8D241BCACD00198A3E /* normalCell.swift in Sources */,
 				4DB06D74241BAB3400198A3E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

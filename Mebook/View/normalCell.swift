@@ -8,7 +8,11 @@
 
 import UIKit
 
+// Tên class bắt đầu bằng chữ in hoa
 class normalCell: UITableViewCell {
+    
+    // Nên define ID cho cell ở ngay trong file này
+    static let normalCellID = "normalCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

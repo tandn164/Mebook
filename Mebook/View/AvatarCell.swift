@@ -8,7 +8,11 @@
 
 import UIKit
 
+// Cell này để làm gì -> cần comment nhé
 class AvatarCell: UITableViewCell {
+    
+    // Nên define ID cho cell ở ngay trong file này
+    static let avatarCellID = "AvatarCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

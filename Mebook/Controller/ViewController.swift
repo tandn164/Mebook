@@ -12,11 +12,23 @@ class MebookViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "AvatarCell", bundle: nil), forCellReuseIdentifier: "AvatarCell")
+        
+        setupTableView()
+    }
+    
+    // đưa phần setup table ra method riêng để source nhìn thoáng hơn
+    private func setupTableView() {
+        
+        // thay vì dùng hardcode thì dùng ID đã define ở trong cell để hạn chế miss typing
+        tableView.register(UINib(nibName: AvatarCell.avatarCellID, bundle: nil), forCellReuseIdentifier: AvatarCell.avatarCellID)
         tableView.register(UINib(nibName: "normalCell", bundle: nil), forCellReuseIdentifier: "normalCell")
         tableView.register(UINib(nibName: "Logout", bundle: nil), forCellReuseIdentifier: "LogOut")
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // nên define section ra enum để có ý nghĩa hơn -> đặt tên dễ hiểu sau dễ maintain
+        // Mỗi section là tập hợp các cell cùng chức năng nên trường hợp này nên chia 3 section Avatar, Normal và Logout hoặc dùng 1 section và có 8 cell như hiện tại
+        // Thử sửa lại thành 3 section nhé + số cell tương ứng define ở dưới
         switch section {
         case 0,1,4,5,7:
             return 1
@@ -27,6 +39,21 @@ class MebookViewController: UITableViewController {
         default:
             return 0
         }
+        
+//        if let _section = SectionType(rawValue: section) {
+//
+//            switch _section {
+//            case .avatar:
+//                print()
+//            case .normal:
+//                print()
+//            case .logout:
+//                print()
+//            }
+//        } else {
+//            return 0
+//        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,9 +141,12 @@ class MebookViewController: UITableViewController {
         }
         return UITableViewCell()
     }
+    
+    // nên custom header thành 1 class để gọi ra chứ ko vẽ ra ở đây luôn -> code rối
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 5{
             let label = UILabel()
+            // text ko neen hardcode, neen define ra file localize string
             label.text = "    FAVORITES"
             label.textColor = UIColor.lightGray
             label.backgroundColor = UIColor(named: "maunen")
@@ -158,5 +188,16 @@ class MebookViewController: UITableViewController {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 8
+        // default nếu ko ovveride func này thì return 1 section
+        
+        // nếu sửa như comment ở trên thì
+        // return 3
     }
+}
+
+// Mặc định enum kiểu int thì bắt đầu từ 0
+enum SectionType: Int {
+    case avatar
+    case normal
+    case logout
 }

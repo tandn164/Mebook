@@ -7,18 +7,16 @@
 //
 
 import UIKit
-
+// Cell hiển thị thông tin cá nhân, cell này có 2 label nên em tạo riêng
 class AvatarCell: UITableViewCell {
-
+    
+    static let avatarCellID = "AvatarCell"
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

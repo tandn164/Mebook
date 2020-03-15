@@ -8,88 +8,95 @@
 
 import UIKit
 
-class MebookViewController: UITableViewController {
+enum SectionType: Int {
+    case avatar
+    case normalSelection
+    case favorites
+    case setting
+    case logout
+}
 
+class MebookViewController: UITableViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "AvatarCell", bundle: nil), forCellReuseIdentifier: "AvatarCell")
-        tableView.register(UINib(nibName: "normalCell", bundle: nil), forCellReuseIdentifier: "normalCell")
-        tableView.register(UINib(nibName: "Logout", bundle: nil), forCellReuseIdentifier: "LogOut")
+        setupTableView()
+    }
+    private func setupTableView(){
+        tableView.register(UINib(nibName: AvatarCell.avatarCellID, bundle: nil), forCellReuseIdentifier: AvatarCell.avatarCellID)
+        tableView.register(UINib(nibName: NormalCell.normalCellID, bundle: nil), forCellReuseIdentifier: NormalCell.normalCellID)
+        tableView.register(UINib(nibName: LogoutCell.logoutCellID, bundle: nil), forCellReuseIdentifier: LogoutCell.logoutCellID)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0,1,4,5,7:
-            return 1
-        case 2:
-            return 2
-        case 3,6:
-            return 3
-        default:
+        // do ở cái Favorites có header nên em không gộp được thành 3 section mà phải tách ra 5 section ạ
+        if let _section = SectionType(rawValue: section)
+        {
+            switch _section {
+            case .avatar:
+                return 1
+            case .normalSelection:
+                return 7
+            case .favorites:
+                return 1
+            case .setting:
+                return 3
+            case .logout:
+                return 1 
+            }
+        }
+        else{
             return 0
         }
+        //P/S: Em vừa check thử trong code mẫu người ta cũng phải chia ra 5 section ạ
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarCell", for: indexPath) as? AvatarCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: AvatarCell.avatarCellID, for: indexPath) as? AvatarCell {
             return cell
             }
         case 1:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath) as? normalCell {
-                cell.imageView?.image=UIImage(systemName: "person.2.fill")
-                cell.textLabel?.text="Friends"
+            if let cell = tableView.dequeueReusableCell(withIdentifier: NormalCell.normalCellID, for: indexPath) as? NormalCell {
+                switch indexPath.row {
+                case 0:
+                    cell.imageView?.image=UIImage(systemName: "person.2.fill")
+                    cell.textLabel?.text="Friends"
+                case 1:
+                    cell.imageView?.image = UIImage(systemName: "calendar")
+                    cell.textLabel?.text = "Events"
+                case 2:
+                    cell.imageView?.image = UIImage(systemName: "person.circle.fill")
+                    cell.textLabel?.text = "Groups"
+                case 3:
+                    cell.imageView?.image = UIImage(systemName: "book.fill")
+                    cell.textLabel?.text = "CMU"
+                case 4:
+                    cell.imageView?.image = UIImage(systemName: "house.fill")
+                    cell.textLabel?.text = "Town Hall"
+                case 5:
+                    cell.imageView?.image = UIImage(systemName: "gamecontroller.fill")
+                    cell.textLabel?.text = "Instant Games"
+                case 6:
+                    cell.textLabel?.text="\tSee More..."
+                    cell.imageView?.image = UIImage()
+                    cell.accessoryType = .none
+                    cell.textLabel?.textColor=UIColor(named: "mauheader")
+                default:
+                    break
+                }
             return cell
             }
         case 2:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath) as? normalCell {
-                switch indexPath.row {
-                case 0:
-                    cell.imageView?.image = UIImage(systemName: "calendar")
-                    cell.textLabel?.text = "Events"
-                case 1:
-                    cell.imageView?.image = UIImage(systemName: "person.circle.fill")
-                    cell.textLabel?.text = "Groups"
-                default:
-                    break
-                }
-                return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: NormalCell.normalCellID, for: indexPath) as? NormalCell {
+                //em chưa tạo file localize string, tối nay em sẽ nghiên cứu để chuyển ngôn ngữ của toàn bộ app luôn ạ
+                cell.textLabel?.text="\tAdd Favorites..."
+                cell.imageView?.image = UIImage()
+                cell.accessoryType = .none
+                cell.textLabel?.textColor=UIColor(named: "mauheader")
+            return cell
             }
         case 3:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath) as? normalCell {
-                switch indexPath.row {
-                case 0:
-                    cell.imageView?.image = UIImage(systemName: "book.fill")
-                    cell.textLabel?.text = "CMU"
-                case 1:
-                    cell.imageView?.image = UIImage(systemName: "house.fill")
-                    cell.textLabel?.text = "Town Hall"
-                case 2:
-                    cell.imageView?.image = UIImage(systemName: "gamecontroller.fill")
-                    cell.textLabel?.text = "Instant Games"
-                default:
-                    break
-                }
-                return cell
-            }
-        case 4:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath) as? normalCell {
-                cell.textLabel?.text="       See More..."
-                cell.imageView?.image = UIImage()
-                cell.accessoryType = .none
-                cell.textLabel?.textColor=UIColor(named: "mauheader")
-            return cell
-            }
-        case 5:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath) as? normalCell {
-                cell.textLabel?.text="       Add Favoites..."
-                cell.imageView?.image = UIImage()
-                cell.accessoryType = .none
-                cell.textLabel?.textColor=UIColor(named: "mauheader")
-            return cell
-            }
-        case 6:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath) as? normalCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: NormalCell.normalCellID, for: indexPath) as? NormalCell {
                 switch indexPath.row {
                 case 0:
                     cell.imageView?.image = UIImage(systemName: "gear")
@@ -105,8 +112,8 @@ class MebookViewController: UITableViewController {
                 }
                 return cell
             }
-        case 7:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "LogOut", for: indexPath) as? Logout{
+        case 4:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.logoutCellID, for: indexPath) as? LogoutCell{
             return cell
             }
         default:
@@ -115,43 +122,17 @@ class MebookViewController: UITableViewController {
         return UITableViewCell()
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 5{
-            let label = UILabel()
-            label.text = "    FAVORITES"
-            label.textColor = UIColor.lightGray
-            label.backgroundColor = UIColor(named: "maunen")
-            return label
-        }
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "maunen")
-        return view
+        return CustomSection().setViewForHeaderInSection(section)
         
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "maunen")
-        return view
+        return CustomSection().setViewForFooterInSection(section)
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0,1:
-            return 50
-        case 2,3,4:
-            return 2
-        case 5:
-            return 30
-        case 6,7:
-            return 48
-        default:
-            return 0
-        }
+        CustomSection().setHeightForHeaderInSection(section)
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 4
-        {
-            return 30
-        }
-        return 0
+        CustomSection().setHeightForFooterInSection(section)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)    

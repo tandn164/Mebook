@@ -1,5 +1,5 @@
 //
-//  OptionCell.swift
+//  Logout.swift
 //  Mebook
 //
 //  Created by Nguyễn Đức Tân on 3/13/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class OptionCell: UITableViewCell {
-
+class LogoutCell: UITableViewCell {
+    static let logoutCellID = "LogoutCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

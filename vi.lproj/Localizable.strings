@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Mebook
+
+  Created by Nguyễn Đức Tân on 3/16/20.
+  Copyright © 2020 Nguyễn Đức Tân. All rights reserved.
+*/
+"friends" = "Bạn bè";
+"events" = "Sự kiện";
+"groups" = "Nhóm";
+"photo" = "Ảnh";
+"town hall" = "Khu vực quanh tôi";
+"instant games" = "Giải trí";
+"see more" = "\tXem thêm";
+"add favorites" = "\tThêm ưa thích";
+"favorites" = "\tƯa thích";
+"setting" = "Cài đặt";
+"privacy shortcuts" = "Lối tắt quyền riêng tư";
+"help and support" = "Trợ giúp";
+"view your profile" = "Xem trang cá nhân";
+"log out" = "Đăng Xuất";

@@ -10,6 +10,7 @@ import UIKit
 
 class LogoutCell: UITableViewCell {
     static let logoutCellID = "LogoutCell"
+    @IBOutlet weak var logOut: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

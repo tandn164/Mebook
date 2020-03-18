@@ -11,7 +11,7 @@ class CustomSection {
    func setViewForHeaderInSection(_ section: Int) -> UIView? {
         if section == 2{
             let label = UILabel()
-            label.text = "\tFAVORITES"
+            label.text = NSLocalizedString("favorites", comment: "")
             label.textColor = UIColor.lightGray
             label.backgroundColor = UIColor(named: "maunen")
             return label
